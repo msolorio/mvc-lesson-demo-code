@@ -37,8 +37,15 @@ app.get('/about', (request, response) => {
   response.send('All about my website!');
 })
 
-app.get('/fruits/:someParameter', (request, response) => {
-  console.log(request.params.someParameter);
+app.get('/fruits/:fruitIndex/:clientName', (request, response) => {
+  console.log(fruits[request.params.fruitIndex]);
+
+  const fruitIndex = request.params.fruitIndex;
+  const clientName = request.params.clientName;
+
+  const message = `Hello ${clientName}, here is your ${fruits[fruitIndex]}`
+
+  response.send(message);
 });
 
 // app.get('/fruits/0', (request, response) => {
