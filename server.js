@@ -8,6 +8,10 @@
 
 // node_modules - A directory that holds all of our packages
 
+// nodemon - Node Monitor - Listens for when we save our file and restarts the node process / our server
+
+////////////////////// CONFIGURATION /////////////////////
+
 // Pulling in the express package into this file
 const express = require('express');
 
@@ -16,13 +20,40 @@ const app = express();
 
 const port = 4000;
 
+// Temperary, simulated database
+//              0        1       2
+const fruits = ['apple', 'kiwi', 'orange'];
+
+
+/////////////////////////// ROUTES ///////////////////////
+
 // Listen for requests on the '/' route, and when they are recieved
 // call this callback function
 app.get('/', (request, response) => {
   response.send('Hello world!');
 })
 
+app.get('/about', (request, response) => {
+  response.send('All about my website!');
+})
 
+app.get('/fruits/:someParameter', (request, response) => {
+  console.log(request.params.someParameter);
+});
+
+// app.get('/fruits/0', (request, response) => {
+//   response.send(fruits[0]);
+// })
+
+// app.get('/fruits/1', (request, response) => {
+//   response.send(fruits[1]);
+// })
+
+// app.get('/fruits/2', (request, response) => {
+//   response.send(fruits[2]);
+// })
+
+///////////////////// STARTING THE SERVER /////////////////
 // Start up our server
 // Start the server on the specified port
 // After it starts, call the callback function
