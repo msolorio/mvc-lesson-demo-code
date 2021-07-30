@@ -11,7 +11,9 @@
 
   <ul>
     <% for (let i = 0; i < allFruits.length; i++) { %>
-      <li><%= allFruits[i].name %></li>
+      <li>
+        <p>The <%= allFruits[i].name %> is <%= allFruits[i].color %></p>
+      </li>
     <% } %>
   </ul>
 </body>
