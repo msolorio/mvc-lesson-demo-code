@@ -8,7 +8,7 @@
 
 // node_modules - A directory that holds all of our packages
 
-// nodemon - Node Monitor - Listens for when we save our file and restarts the node process / our server
+// nodemon - Node Monitor - Listens for when we save our file and restarts the node process (restarts our server)
 
 ////////////////////// CONFIGURATION /////////////////////
 
@@ -30,23 +30,29 @@ const fruits = ['apple', 'kiwi', 'orange'];
 // Listen for requests on the '/' route, and when they are recieved
 // call this callback function
 app.get('/', (request, response) => {
-  response.send('Hello world!');
+  response.send('Welcome to the Fruits App');
 })
 
 app.get('/about', (request, response) => {
-  response.send('All about my website!');
+  response.send('All about my website');
 })
 
-app.get('/fruits/:fruitIndex/:clientName', (request, response) => {
-  console.log(fruits[request.params.fruitIndex]);
 
-  const fruitIndex = request.params.fruitIndex;
-  const clientName = request.params.clientName;
-
-  const message = `Hello ${clientName}, here is your ${fruits[fruitIndex]}`
-
-  response.send(message);
+app.get('/fruits/:fruitIndex', (request, response) => {
+  response.send(fruits[request.params.fruitIndex]);
 });
+
+
+// app.get('/fruits/:fruitIndex/:clientName', (request, response) => {
+//   console.log(fruits[request.params.fruitIndex]);
+
+//   const fruitIndex = request.params.fruitIndex;
+//   const clientName = request.params.clientName;
+
+//   const message = `Hello ${clientName}, here is your ${fruits[fruitIndex]}`
+
+//   response.send(message);
+// });
 
 // app.get('/fruits/0', (request, response) => {
 //   response.send(fruits[0]);
